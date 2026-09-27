@@ -19,19 +19,8 @@
   document.addEventListener("click", function (e) { if (!nav.contains(e.target)) close(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
 
-  // Priority links: hide from the end until the row fits.
   var mq = window.matchMedia("(max-width: 820px)");
-  function fit() {
-    links.forEach(function (l) { l.hidden = false; });
-    if (!mq.matches) { close(); return; }
-    // The current page link is pointless in the bar (it stays in the menu).
-    links.forEach(function (l) { if (l.getAttribute("aria-current") === "page") l.hidden = true; });
-    function used() { var w = 0; links.forEach(function (l) { if (!l.hidden) w += l.offsetWidth; }); return w; }
-    for (var i = links.length - 1; i >= 0 && used() > bar.clientWidth; i--) links[i].hidden = true;
-  }
-  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 80); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-  fit();
+  mq.addEventListener ? mq.addEventListener("change", close) : mq.addListener(close);
 })();
 
 // Iron Lock ladder — mirrors LockStreakManager.TIERS, startFeeRupees and breakFeeRupees.
@@ -428,4 +417,19 @@
     box.classList.add("out");
     setTimeout(function () { text.textContent = QUOTES[i][0]; by.textContent = QUOTES[i][1]; box.classList.remove("out"); }, 500);
   }, 6000);
+})();
+
+// Moving green-gold shine layer on every section and card (same effect as the navbar).
+(function () {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var sel = ".nav, main > section, main > .page-head, .wave-foot, .why-card, .pillar, .step, .get-grid li, .product, .vm-card, .faq-item, .contact-card, .install li, .stats-grid, .legal section";
+  document.querySelectorAll(sel).forEach(function (el) {
+    if (getComputedStyle(el).position === "static") el.style.position = "relative";
+    el.style.isolation = "isolate";
+    var s = document.createElement("span");
+    s.className = "sweep"; s.setAttribute("aria-hidden", "true");
+    s.style.setProperty("--sd", (5.5 + Math.random() * 3).toFixed(1) + "s");
+    s.style.setProperty("--sdl", (-Math.random() * 8).toFixed(1) + "s");
+    el.appendChild(s);
+  });
 })();
