@@ -1,15 +1,37 @@
-// Mobile menu.
+// Navbar: on small screens show as many links as fit in the bar; the ☰ menu holds all of them.
 (function () {
-  var btn = document.querySelector(".menu-btn");
-  var menu = document.getElementById("menu");
-  if (!btn || !menu) return;
-  btn.addEventListener("click", function () {
-    var open = menu.classList.toggle("open");
-    btn.setAttribute("aria-expanded", open ? "true" : "false");
-  });
-  menu.addEventListener("click", function (e) {
-    if (e.target.tagName === "A") { menu.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
-  });
+  var nav = document.querySelector(".nav"), btn = document.querySelector(".menu-btn"), bar = document.getElementById("menu");
+  if (!nav || !btn || !bar) return;
+  var cta = nav.querySelector(".btn-glint");
+  var links = [].slice.call(bar.querySelectorAll("a"));
+
+  // Drawer with every link + the download button.
+  var drawer = document.createElement("nav");
+  drawer.className = "nav-drawer"; drawer.id = "nav-drawer"; drawer.setAttribute("aria-label", "All pages");
+  links.forEach(function (l) { var c = l.cloneNode(true); c.removeAttribute("data-spy"); drawer.appendChild(c); });
+  if (cta) { var d = cta.cloneNode(true); d.className = "btn btn-gold drawer-cta"; drawer.appendChild(d); }
+  nav.appendChild(drawer);
+  btn.setAttribute("aria-controls", "nav-drawer");
+
+  function close() { drawer.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
+  btn.addEventListener("click", function (e) { e.stopPropagation(); var o = drawer.classList.toggle("open"); btn.setAttribute("aria-expanded", o ? "true" : "false"); });
+  drawer.addEventListener("click", function (e) { if (e.target.closest("a")) close(); });
+  document.addEventListener("click", function (e) { if (!nav.contains(e.target)) close(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+
+  // Priority links: hide from the end until the row fits.
+  var mq = window.matchMedia("(max-width: 820px)");
+  function fit() {
+    links.forEach(function (l) { l.hidden = false; });
+    if (!mq.matches) { close(); return; }
+    // The current page link is pointless in the bar (it stays in the menu).
+    links.forEach(function (l) { if (l.getAttribute("aria-current") === "page") l.hidden = true; });
+    function used() { var w = 0; links.forEach(function (l) { if (!l.hidden) w += l.offsetWidth; }); return w; }
+    for (var i = links.length - 1; i >= 0 && used() > bar.clientWidth; i--) links[i].hidden = true;
+  }
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 80); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  fit();
 })();
 
 // Iron Lock ladder — mirrors LockStreakManager.TIERS, startFeeRupees and breakFeeRupees.
