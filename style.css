@@ -881,3 +881,12 @@ section[id] { scroll-margin-top: 90px; }
 .nf .wrap { width: 100%; }
 .nf-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
 .vhero { background: #9FB6BF url(videos/hero-poster.jpg) center / cover no-repeat; }
+
+/* ---------- Counter v2: balanced number + label (numbers no longer dwarf the words) ---------- */
+.dl-counter, .product .dl-counter, .evi-hero .dl-counter { gap: 0; padding: 10px 6px 10px 12px; border-radius: 14px; }
+.dl-live { margin-right: 6px; }
+.dl-item { align-items: baseline; gap: 6px; padding: 0 14px; }
+.dl-item + .dl-item { padding-left: 14px; }
+.dl-counter b, .product .dl-counter b { font: 800 20px/1 var(--f-display); letter-spacing: -0.01em; }
+.dl-item > span { font: 600 14px/1 var(--f-body); color: #3B4A41; }
+@media (max-width: 480px) { .dl-item { padding: 0 10px; } .dl-counter b, .product .dl-counter b { font-size: 18px; } }

@@ -379,7 +379,7 @@
     if (!boxes.length) return;
     fetch(API, { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
       if (!d || typeof d.downloads !== "number") return;
-      boxes.forEach(function (b) { b.hidden = false; var w = b.querySelector(".js-in-wrap"); if (w) w.hidden = !(d.installs > 0); });
+      boxes.forEach(function (b) { b.hidden = false; });
       animate("downloads", d.downloads); animate("installs", d.installs);
     }).catch(function () {});
   }
