@@ -923,6 +923,13 @@ section[id] { scroll-margin-top: 90px; }
 .feat-list b { display: block; font: 700 17px/1.25 var(--f-display); color: var(--ink); }
 .feat-list small { display: block; margin-top: 2px; font: 500 14.5px/1.35 var(--f-body); color: var(--muted); }
 
+/* Our Solutions feature list: check rail (green line with a check point per feature) */
+.feat-list { position: relative; gap: 4px; }
+.feat-list::before { content: ""; position: absolute; left: 10px; top: 16px; bottom: 16px; width: 2px; border-radius: 2px; background: linear-gradient(#13A24B, #D7EBDD); }
+.feat-list li { grid-template-columns: 22px 1fr; gap: 18px; align-items: start; padding: 8px 0; }
+.feat-list .fi, .feat-list li:nth-child(even) .fi { position: relative; width: 22px; height: 22px; margin-top: 1px; border-radius: 50%; background: #fff; border: 2px solid #13A24B; color: #13A24B; }
+.feat-list .fi svg { width: 12px; height: 12px; }
+
 /* EviLock hero: "Your phone, on your terms" on one line */
 .evi-hero h1 { white-space: nowrap; font-weight: 900; font-size: min(52px, calc((100vw - 48px) / 13.2)); }
 @media (min-width: 1001px) { .evi-hero h1 { font-size: min(52px, calc((100vw - 48px) * .55 / 13.2)); } }
