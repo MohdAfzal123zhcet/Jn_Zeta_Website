@@ -939,7 +939,7 @@ section[id] { scroll-margin-top: 90px; }
 @media (max-width: 760px) {
   .vhero .hero-title { white-space: nowrap; font-size: min(52px, calc((100vw - 40px) / 9.4)); }
 }
-.vhero .hero-title { font-size: min(96px, calc((100vw - 48px) / 20)); }
+.vhero .hero-title { font-size: min(86px, calc((100vw - 48px) / 22)); }
 /* Whole heading in one moving green-gold shimmer (not black + shine) */
 .vhero .hero-title { display: table; margin-left: auto; margin-right: auto; background: linear-gradient(90deg, #0F1712, #0E7A3A, #1FB85A, #E6B000, #1FB85A, #0E7A3A, #0F1712); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; animation: shimmer 5s linear infinite; }
 .vhero .hero-title .shine { background: none; animation: none; }
