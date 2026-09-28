@@ -989,7 +989,12 @@ section[id] { scroll-margin-top: 90px; }
   .nav-mid.rot span:nth-child(4) { animation-delay: 9s; }
   .nav-mid.tick { justify-content: flex-start; -webkit-mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
   .nav-mid.tick .tr { display: flex; white-space: nowrap; animation: navtick 16s linear infinite; }
-  .nav-mid.tick span { font: 600 14px var(--f-body); color: #26332B; padding-right: 6px; }
+  /* Moving navbar text shimmers green (user request, 2026-09-28) - deep greens with a bright
+     green glint, so it stays readable on the light navbar. */
+  .nav-mid.tick span { font: 700 14px var(--f-body); padding-right: 6px;
+    background: linear-gradient(90deg, #0E7A3A, #13A24B, #2EE674, #9BF5BD, #2EE674, #13A24B, #0E7A3A); background-size: 200% 100%;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: #0E7A3A;
+    animation: shimmer 2.8s linear infinite; }
 }
 @keyframes navrot { 0% { opacity: 0; transform: translateY(12px); } 4%, 21% { opacity: 1; transform: none; } 25%, 100% { opacity: 0; transform: translateY(-12px); } }
 @keyframes navtick { to { transform: translateX(-50%); } }
@@ -1010,7 +1015,7 @@ section[id] { scroll-margin-top: 90px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .nav-mid.rot span { animation: none; } .nav-mid.rot span:first-child { opacity: 1; transform: none; }
-  .nav-mid.tick .tr { animation: none; }
+  .nav-mid.tick .tr, .nav-mid.tick span { animation: none; }
 }
 /* shine v2: horizontal gradient + skew, so edges always fade softly */
 .sweep::before { left: -10%; width: 40%; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(46,230,116,.13) 35%, rgba(255,215,0,.18) 65%, rgba(255,255,255,0)); transform: translateX(-130%) skewX(-18deg); animation-name: sweepX3; }
