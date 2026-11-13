@@ -1,6 +1,8 @@
 {
   "rewrites": [
-    { "source": "/privacy", "destination": "/privacy.html" }
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/evilock", "destination": "/evilock.html" },
+    { "source": "/evilock/privacy", "destination": "/evilock-privacy.html" }
   ],
   "headers": [
     {
