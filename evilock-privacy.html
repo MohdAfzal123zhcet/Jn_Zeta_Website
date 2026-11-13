@@ -23,6 +23,95 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <link rel="stylesheet" href="/style.css">
 <script>document.documentElement.classList.add("js")</script>
+<style>
+/* EviLock privacy page (design A, neutral). Scoped to .pp; the site's style.css stays in charge of the rest. */
+
+/* Option A, final. Single light look on purpose: the AoE Labs website is light-only.
+   Layout: hero band -> About card -> "In short" checklist -> numbered sections -> contact card. */
+:root{
+  --pp-bg:#f6f6f5; --pp-surface:#ffffff; --pp-ink:#111111; --pp-muted:#5c5c5c; --pp-line:#e4e4e2;
+  --pp-forest:#111111; --pp-forest-soft:#f0f0ee; --pp-brass:#8a8a86; --pp-brass-soft:#f7f7f5; --pp-ok:#111111;
+  --pp-display:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --pp-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --pp-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+
+.pp{max-width:860px;margin:0 auto;padding-block:128px 64px}
+.pp a{color:var(--pp-forest);text-underline-offset:3px}
+.pp a:focus-visible{outline:2px solid var(--pp-brass);outline-offset:2px;border-radius:3px}
+.pp h1,.pp h2{font-family:var(--pp-display);text-wrap:balance;letter-spacing:-.015em}
+.pp code{font-family:var(--pp-mono);font-size:.86em;background:var(--pp-forest-soft);color:var(--pp-forest);padding:2px 7px;border-radius:6px}
+
+/* Hero */
+.pp-hero{background:var(--pp-surface);border:1px solid var(--pp-line);border-radius:20px;padding:36px 36px 30px}
+.pp-brand{display:flex;align-items:center;gap:12px}
+.pp-brand svg{width:56px;height:56px;flex:none}
+.pp-brand b{font:700 18px var(--pp-display);letter-spacing:-.01em}
+.pp-brand small{display:block;font:500 13px var(--pp-body);color:var(--pp-muted)}
+.pp-eyebrow{font:600 12px var(--pp-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--pp-muted);margin-top:26px}
+.pp-hero h1{font-size:clamp(34px,6vw,52px);line-height:1.04;font-weight:800;margin:8px 0 10px;color:var(--pp-ink)}
+.pp-hero p{margin:0;color:var(--pp-muted);max-width:52ch}
+.pp-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.pp-chip{font-size:14px;color:var(--pp-muted);background:var(--pp-forest-soft);border-radius:999px;padding:5px 13px}
+.pp-chip b{font-weight:600;color:var(--pp-ink)}
+
+/* About + In short */
+.pp-intro{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px;margin-top:18px}
+.pp-card{background:var(--pp-surface);border:1px solid var(--pp-line);border-radius:16px;padding:22px 24px;min-width:0}
+.pp-card h2{font-size:19px;margin:0 0 10px}
+.pp-card p{margin:0 0 10px}
+.pp-card p:last-child{margin:0}
+.pp-short{background:var(--pp-brass-soft)}
+.pp-short ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.pp-short li{position:relative;padding-left:28px;line-height:1.5}
+.pp-short li::before{content:"";position:absolute;left:3px;top:.42em;width:12px;height:7px;
+  border-left:2.5px solid var(--pp-ok);border-bottom:2.5px solid var(--pp-ok);transform:rotate(-45deg)}
+
+/* Contents */
+.pp-toc{margin:26px 0 4px;display:flex;flex-wrap:wrap;gap:8px}
+.pp-toc a{text-decoration:none;font-size:14px;font-weight:600;color:var(--pp-forest);background:var(--pp-forest-soft);border-radius:9px;padding:6px 12px}
+.pp-toc a:hover{background:#e4e4e1}
+
+/* Sections */
+.pp-sec{padding:34px 0 10px;border-bottom:1px solid var(--pp-line);scroll-margin-top:90px}
+.pp-sec h2{display:flex;align-items:baseline;gap:14px;font-size:clamp(22px,3.2vw,26px);font-weight:700;margin:0 0 14px}
+.pp-n{font:600 13px var(--pp-mono);color:var(--pp-brass);min-width:24px}
+.pp-sec p{margin:0 0 14px;max-width:68ch}
+.pp-sec ul{margin:0 0 14px;padding-left:22px;max-width:70ch}
+.pp-sec li{margin-bottom:9px}
+.pp-sec li::marker{color:var(--pp-brass)}
+.pp-lede{color:var(--pp-muted)}
+
+.pp-tbl{overflow-x:auto;background:var(--pp-surface);border:1px solid var(--pp-line);border-radius:14px;margin:4px 0 16px}
+.pp-tbl table{width:100%;border-collapse:collapse;font-size:15.5px;min-width:560px}
+.pp-tbl th,.pp-tbl td{text-align:left;padding:13px 16px;vertical-align:top}
+.pp-tbl th{font:600 12px var(--pp-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--pp-forest);background:var(--pp-forest-soft)}
+.pp-tbl tr+tr td{border-top:1px solid var(--pp-line)}
+.pp-tbl td:first-child{font-weight:600;white-space:nowrap}
+.pp-stays{color:var(--pp-ok);font-weight:600;white-space:nowrap}
+
+.pp-pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0!important;margin:2px 0 14px}
+.pp-pills li{margin:0;background:var(--pp-surface);border:1px solid var(--pp-line);border-radius:999px;padding:4px 14px;font-size:15px;color:var(--pp-muted)}
+.pp-pills li::before{content:"✕";color:var(--pp-muted);font-size:12px;margin-right:7px}
+
+.pp-note{background:var(--pp-brass-soft);border-radius:12px;padding:12px 16px;font-size:15.5px;max-width:68ch}
+
+/* Contact */
+.pp-contact{margin-top:34px;background:var(--pp-forest);color:#fff;border-radius:18px;padding:28px;display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between}
+.pp-contact h2{color:#fff;font-size:24px;margin:0 0 4px;display:flex;gap:14px;align-items:baseline}
+.pp-contact .pp-n{color:#a9a9a5}
+.pp-contact p{margin:0;color:#cfcfcc}
+.pp-mail{font:600 16px var(--pp-mono);background:#fff;color:var(--pp-forest)!important;text-decoration:none;padding:11px 18px;border-radius:11px;user-select:all}
+.pp-foot{text-align:center;color:var(--pp-muted);font-size:14px;margin-top:26px}
+
+@media (max-width:720px){
+  .pp{padding-block:104px 40px}
+  .pp-hero{padding:30px 22px 26px;border-radius:16px}
+  .pp-intro{grid-template-columns:1fr}
+  .pp-card{padding:18px 18px}
+  .pp-contact{padding:22px}
+}
+</style>
 </head>
 <body>
 
@@ -42,149 +131,163 @@
   </div>
 </header>
 
-<main>
-  <section class="apps-head legal-head">
-    <div class="wrap">
-      <h1>EviLock <span class="shine">Privacy Policy</span></h1>
-      <p class="sub">EviLock for Android, by AoE Labs. Last updated 13 November 2026.</p>
+<main><div class="wrap"><div class="pp">
+
+  <header class="pp-hero">
+    <div class="pp-brand">
+      <svg viewBox="0 0 100 100" role="img" aria-label="AoE Labs logo"><defs><linearGradient id="lg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="0" spreadMethod="repeat"><stop offset="0" stop-color="#39FF6A"/><stop offset=".38" stop-color="#5CFF84"/><stop offset=".5" stop-color="#F0FFF4"/><stop offset=".62" stop-color="#5CFF84"/><stop offset="1" stop-color="#39FF6A"/><animateTransform attributeName="gradientTransform" type="translate" from="-100 0" to="100 0" dur="3.2s" repeatCount="indefinite"/></linearGradient><filter id="lglow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><circle cx="50" cy="50" r="50" fill="#050A06"/><g fill="url(#lg)" filter="url(#lglow)"><path d="M50.00 15.00 L55.68 30.18 L71.87 30.89 L59.19 40.99 L63.52 56.61 L50.00 47.66 L36.48 56.61 L40.81 40.99 L28.13 30.89 L44.32 30.18 Z"/><text x="50" y="80" text-anchor="middle" font-family="Schibsted Grotesk, Arial Black, sans-serif" font-weight="800" font-size="11.5" letter-spacing="-.1">AoE Labs</text></g></svg>
+      <b>AoE Labs</b>
     </div>
+    <div class="pp-eyebrow">EviLock for Android</div>
+    <h1>Privacy Policy</h1>
+    <p>How the EviLock Android app handles your information.</p>
+    <div class="pp-chips">
+      <span class="pp-chip"><b>Last updated:</b> 13 November 2026</span>
+      <span class="pp-chip"><b>Developer:</b> AoE Labs</span>
+      <span class="pp-chip"><b>Package:</b> com.evilock.android</span>
+    </div>
+  </header>
+
+  <div class="pp-intro">
+    <section class="pp-card" aria-labelledby="about">
+      <h2 id="about">About EviLock</h2>
+      <p>EviLock is a self-control app. It blocks adult content, Shorts and Reels, limits social media use, and locks your phone during the hours you choose with Focus mode, Strict mode and Digital Curfew. It also shows your screen time, counts your steps and has a Habit tracker.</p>
+      <p>EviLock does not collect or store your personal data on any server, and we never sell it. Everything the app checks and saves stays on your own phone.</p>
+    </section>
+    <section class="pp-card pp-short" aria-labelledby="short">
+      <h2 id="short">In short</h2>
+      <ul>
+        <li>No account, no login, no analytics.</li>
+        <li>Everything is checked on your phone.</li>
+        <li>We have no servers that receive your data.</li>
+        <li>We never sell your data.</li>
+        <li>Only Google Play (payments, updates) and Google AdMob (ads) are involved.</li>
+      </ul>
+    </section>
+  </div>
+
+  <nav class="pp-toc" aria-label="Contents">
+    <a href="#data">Data used</a><a href="#not-used">Not accessed</a><a href="#permissions">Permissions</a>
+    <a href="#online">Internet use</a><a href="#third-parties">Third parties</a><a href="#sharing">Sharing</a>
+    <a href="#deletion">Deletion</a><a href="#children">Children</a><a href="#contact">Contact</a>
+  </nav>
+
+  <section class="pp-sec" id="data">
+    <h2><span class="pp-n">01</span>Data the app uses on your phone</h2>
+    <p class="pp-lede">All of this stays on your phone. None of it is uploaded or sent to us.</p>
+    <div class="pp-tbl"><table>
+      <thead><tr><th>Data</th><th>Why it is used</th><th>Where it stays</th></tr></thead>
+      <tbody>
+        <tr><td>Screen content</td><td>Text, web addresses and a temporary screenshot of the screen, checked by an AI model that runs on your phone, to find and block adult content, Shorts and Reels. Screenshots are checked and discarded at once.</td><td class="pp-stays">Phone only, never saved</td></tr>
+        <tr><td>App usage</td><td>Which app is open and for how long, for screen time, daily limits, Focus mode, Strict mode and Digital Curfew.</td><td class="pp-stays">Phone only</td></tr>
+        <tr><td>Installed apps</td><td>So you can pick which apps to limit or block.</td><td class="pp-stays">Phone only</td></tr>
+        <tr><td>Habit tracker</td><td>The entries you log yourself.</td><td class="pp-stays">Phone only</td></tr>
+        <tr><td>Steps</td><td>Your daily step count, leaving out steps while riding in a bus or car.</td><td class="pp-stays">Phone only</td></tr>
+        <tr><td>Height and weight</td><td>Optional. Entered by you, to estimate walking distance.</td><td class="pp-stays">Phone only</td></tr>
+        <tr><td>Your settings</td><td>Locks, limits, schedules and blocked apps.</td><td class="pp-stays">Phone only</td></tr>
+        <tr><td>Diagnostic log</td><td>A small log of app events, to fix problems. It leaves your phone only if you share it with us yourself.</td><td class="pp-stays">Phone only</td></tr>
+      </tbody>
+    </table></div>
   </section>
 
-  <div class="wrap legal">
+  <section class="pp-sec" id="not-used">
+    <h2><span class="pp-n">02</span>Data we do not access</h2>
+    <ul class="pp-pills"><li>Contacts</li><li>Messages</li><li>Call logs</li><li>Location</li><li>Camera</li><li>Microphone</li><li>Photos</li><li>Files</li></ul>
+  </section>
 
-    <section id="summary">
-      <h2>In short</h2>
-      <ul>
-        <li>No account and no login.</li>
-        <li>Everything the app checks is checked on your phone.</li>
-        <li>We have no servers that receive your data.</li>
-        <li>We never sell or share your data.</li>
-        <li>The only third parties are Google Play (payments and app updates) and Google AdMob (ads on block pages).</li>
-      </ul>
-    </section>
+  <section class="pp-sec" id="permissions">
+    <h2><span class="pp-n">03</span>Permissions and why we need them</h2>
+    <div class="pp-tbl"><table>
+      <thead><tr><th>Permission</th><th>Why it is needed</th></tr></thead>
+      <tbody>
+        <tr><td>Accessibility service</td><td>To detect and block adult content, Shorts and Reels, apply your app limits and locks, and stop EviLock from being removed during a lock you started. The app shows a notice and asks for your consent before you turn it on.</td></tr>
+        <tr><td>Device admin</td><td>Only to stop EviLock from being uninstalled while a lock you started is running.</td></tr>
+        <tr><td>Usage access</td><td>To measure screen time and apply app limits.</td></tr>
+        <tr><td>Physical activity</td><td>To count steps and leave out steps while riding in a bus or car.</td></tr>
+        <tr><td>Notifications</td><td>Reminders when a lock or Premium plan ends, the Habit tracker reminder, and 9 AM and 10 PM greetings.</td></tr>
+        <tr><td>Close other apps</td><td>To close an app or browser right after it is blocked.</td></tr>
+        <tr><td>Run at start-up</td><td>To restart your active locks after the phone restarts.</td></tr>
+        <tr><td>Internet</td><td>Only for the uses listed in section 04.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
 
-    <section id="who">
-      <h2>1. Who we are</h2>
-      <ul>
-        <li><b>Developer:</b> AoE Labs</li>
-        <li><b>App:</b> EviLock (package <code>com.evilock.android</code>)</li>
-        <li><b>Contact:</b> <a href="mailto:zetajn7@gmail.com">zetajn7@gmail.com</a></li>
-      </ul>
-    </section>
+  <section class="pp-sec" id="online">
+    <h2><span class="pp-n">04</span>When the app goes online</h2>
+    <ul>
+      <li><b>Time check:</b> reads the correct time from public servers (google.com, cloudflare.com), so a lock can't be shortened by changing the phone's clock. No personal data is sent.</li>
+      <li><b>Payments:</b> handled by Google Play Billing. We never see your card, UPI or bank details. We only learn whether a purchase succeeded.</li>
+      <li><b>Ads:</b> Google AdMob shows ads in two places only: a full-screen ad on block pages after you tap the button there, and an optional video ad on the Premium page when you tap "Watch ad" to get free Premium time. Google may collect your advertising ID, IP address and ad interaction data to show and measure ads. We do not receive this data.</li>
+      <li><b>App updates:</b> Google Play checks whether a newer version of EviLock is available.</li>
+    </ul>
+  </section>
 
-    <section id="data">
-      <h2>2. Data the app uses on your phone</h2>
-      <p class="lede">All of this stays on your phone. None of it is uploaded or sent to us.</p>
-      <ul>
-        <li><b>Screen content:</b> text, web addresses and a temporary screenshot of the screen, checked by an AI model that runs on the phone, to find and block adult content, Shorts and Reels. Screenshots are checked and discarded at once. They are never saved.</li>
-        <li><b>App usage:</b> which app is open and for how long, for screen time, daily limits, Focus mode, Strict mode and Digital Curfew.</li>
-        <li><b>Installed apps:</b> so you can pick which apps to limit or block.</li>
-        <li><b>Habit tracker entries:</b> the entries you log yourself.</li>
-        <li><b>Steps:</b> your daily step count.</li>
-        <li><b>Height and weight (optional):</b> entered by you, to estimate walking distance.</li>
-        <li><b>Your settings:</b> locks, limits, schedules and blocked apps.</li>
-        <li><b>Diagnostic log:</b> a small log of app events to fix problems. It leaves your phone only if you share it with us yourself.</li>
-      </ul>
-    </section>
+  <section class="pp-sec" id="third-parties">
+    <h2><span class="pp-n">05</span>Third parties</h2>
+    <ul>
+      <li><b>Google Play</b> (payments and app updates): <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+      <li><b>Google AdMob</b> (ads): <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses data from apps that use its services</a></li>
+    </ul>
+    <p class="pp-note">To limit ad tracking, open your phone's <b>Settings → Google → Ads</b> and delete or reset your advertising ID.</p>
+  </section>
 
-    <section id="not-used">
-      <h2>3. Data we do not access</h2>
-      <ul>
-        <li>Contacts, messages and call logs</li>
-        <li>Location</li>
-        <li>Camera and microphone</li>
-        <li>Photos and files</li>
-      </ul>
-    </section>
+  <section class="pp-sec" id="sharing">
+    <h2><span class="pp-n">06</span>Sharing and sale of data</h2>
+    <ul>
+      <li>We do not sell your data.</li>
+      <li>We do not share your data. The only data that leaves your phone is what Google Play and Google AdMob collect directly, as described in section 04.</li>
+      <li>The app has no analytics or tracking tools.</li>
+    </ul>
+  </section>
 
-    <section id="permissions">
-      <h2>4. Permissions and why we need them</h2>
-      <ul>
-        <li><b>Accessibility service:</b> to detect and block adult content, Shorts and Reels, apply your app limits and locks, and stop EviLock from being removed during a lock you started. The app shows a clear notice and asks for your consent before you turn it on.</li>
-        <li><b>Device admin:</b> only to stop EviLock from being uninstalled while a lock you started is running.</li>
-        <li><b>Usage access:</b> to measure screen time and apply app limits.</li>
-        <li><b>Physical activity:</b> to count steps and leave out steps while riding in a bus or car.</li>
-        <li><b>Notifications:</b> for reminders (lock ended, Habit tracker, 9 AM and 10 PM greetings).</li>
-        <li><b>Close other apps:</b> to close an app or browser right after it is blocked.</li>
-        <li><b>Run at start-up:</b> to restart your active locks after the phone restarts.</li>
-        <li><b>Internet:</b> only for the uses listed in section 5.</li>
-      </ul>
-    </section>
+  <section class="pp-sec" id="website">
+    <h2><span class="pp-n">07</span>This website</h2>
+    <ul>
+      <li>No tracking cookies, analytics or ads.</li>
+      <li>Fonts load from Google Fonts, which may see your IP address.</li>
+      <li>The download counter adds one to a total. It stores no IP address or device ID.</li>
+    </ul>
+  </section>
 
-    <section id="online">
-      <h2>5. When the app goes online</h2>
-      <ul>
-        <li><b>Time check:</b> reads the correct time from public servers (google.com, cloudflare.com), so a lock can't be shortened by changing the phone's clock. No personal data is sent.</li>
-        <li><b>Payments:</b> handled by Google Play Billing. We never see your card, UPI or bank details. We only learn whether a purchase succeeded.</li>
-        <li><b>Ads:</b> Google AdMob shows a full-screen ad on block pages, only after you tap a button there. Google may collect your advertising ID, IP address and ad interaction data to show and measure ads. We do not receive this data.</li>
-        <li><b>App updates:</b> Google Play checks whether a newer version of EviLock is available.</li>
-      </ul>
-    </section>
+  <section class="pp-sec" id="deletion">
+    <h2><span class="pp-n">08</span>Keeping and deleting data</h2>
+    <ul>
+      <li>App data stays on your phone until you delete it.</li>
+      <li>Uninstalling EviLock deletes all of it. You can also use <b>Settings → Apps → EviLock → Storage → Clear data</b>.</li>
+      <li>While a lock you started is running, uninstalling is blocked until the lock ends.</li>
+      <li>We hold no copy of your data, so there is nothing for us to delete.</li>
+    </ul>
+  </section>
 
-    <section id="third-parties">
-      <h2>6. Third parties</h2>
-      <ul>
-        <li><b>Google Play</b> (payments, app updates): <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">Google Privacy Policy</a></li>
-        <li><b>Google AdMob</b> (ads): <a href="https://policies.google.com/technologies/partner-sites" rel="noopener" target="_blank">How Google uses data from apps that use its services</a></li>
-      </ul>
-      <p>To limit ad tracking, open your phone's <b>Settings → Google → Ads</b> and delete or reset your advertising ID.</p>
-    </section>
+  <section class="pp-sec" id="children">
+    <h2><span class="pp-n">09</span>Children</h2>
+    <ul>
+      <li>EviLock is not made for children under 13.</li>
+      <li>A parent or guardian may install it on a phone they are responsible for.</li>
+      <li>We do not knowingly collect data from children.</li>
+    </ul>
+  </section>
 
-    <section id="sharing">
-      <h2>7. Sharing and sale of data</h2>
-      <ul>
-        <li>We do not sell your data.</li>
-        <li>We do not share your data with anyone.</li>
-        <li>We do not use analytics or tracking tools in the app.</li>
-      </ul>
-    </section>
+  <section class="pp-sec" id="security">
+    <h2><span class="pp-n">10</span>Security</h2>
+    <p>Your data is never sent to our servers, so it can't be exposed in an online breach. On the phone it is protected by Android's app security.</p>
+  </section>
 
-    <section id="website">
-      <h2>8. This website</h2>
-      <ul>
-        <li>No tracking cookies, analytics or ads.</li>
-        <li>Fonts are loaded from Google Fonts, which may see your IP address.</li>
-        <li>The download counter adds one to a total. It stores no IP address or device ID.</li>
-      </ul>
-    </section>
+  <section class="pp-sec" id="changes">
+    <h2><span class="pp-n">11</span>Changes to this policy</h2>
+    <p>If this policy changes, we will update this page and the "Last updated" date at the top.</p>
+  </section>
 
-    <section id="deletion">
-      <h2>9. Keeping and deleting data</h2>
-      <ul>
-        <li>App data stays on your phone until you delete it.</li>
-        <li>Uninstalling EviLock deletes all of it. You can also use <b>Settings → Apps → EviLock → Storage → Clear data</b>.</li>
-        <li>While a lock you started is running, uninstalling is blocked until the lock ends.</li>
-        <li>We hold no copy of your data, so there is nothing for us to delete.</li>
-      </ul>
-    </section>
+  <section class="pp-contact" id="contact" aria-labelledby="contact-h">
+    <div>
+      <h2 id="contact-h"><span class="pp-n">12</span>Contact</h2>
+      <p>For any question about this policy, email AoE Labs.</p>
+    </div>
+    <a class="pp-mail" href="mailto:zetajn7@gmail.com">zetajn7@gmail.com</a>
+  </section>
 
-    <section id="children">
-      <h2>10. Children</h2>
-      <ul>
-        <li>EviLock is not made for children under 13.</li>
-        <li>A parent or guardian may install it on a phone they are responsible for.</li>
-        <li>We do not knowingly collect data from children.</li>
-      </ul>
-    </section>
-
-    <section id="security">
-      <h2>11. Security</h2>
-      <p>Your data is never sent to our servers, so it can't be exposed in an online breach. On the phone it is protected by Android's app security.</p>
-    </section>
-
-    <section id="changes">
-      <h2>12. Changes to this policy</h2>
-      <p>If this policy changes, we will update this page and the date at the top.</p>
-    </section>
-
-    <section id="contact">
-      <h2>13. Contact</h2>
-      <p>For any question about this policy, email AoE Labs:</p>
-      <p class="legal-mail"><a href="mailto:zetajn7@gmail.com">zetajn7@gmail.com</a></p>
-    </section>
-
-  </div>
-</main>
+  <p class="pp-foot">© 2026 AoE Labs · EviLock</p>
+</div></div></main>
 
 <script src="/app.js"></script>
 </body>
