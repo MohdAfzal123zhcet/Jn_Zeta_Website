@@ -1022,3 +1022,38 @@ section[id] { scroll-margin-top: 90px; }
 .nav .sweep::before { background: linear-gradient(90deg, rgba(255,255,255,0), rgba(46,230,116,.22) 35%, rgba(255,215,0,.3) 65%, rgba(255,255,255,0)); }
 .vhero .sweep::before { background: linear-gradient(90deg, rgba(255,255,255,0), rgba(46,230,116,.08) 35%, rgba(255,215,0,.1) 65%, rgba(255,255,255,0)); }
 @keyframes sweepX3 { 0% { transform: translateX(-130%) skewX(-18deg); } 65%, 100% { transform: translateX(330%) skewX(-18deg); } }
+
+/* =====================================================================
+   v8 header (2026-11-14): same dark forest header as the new website design.
+   Full-width bar, logo + "AoE Labs", pages unchanged, gold "Download apps" button.
+   Only the header is touched; this block must stay last.
+   ===================================================================== */
+.nav, .nav.scrolled {
+  position: fixed; top: 0; left: 0; right: 0; width: 100%; transform: none; border-radius: 0;
+  background: rgba(6, 16, 12, .84); border: 0; border-bottom: 1px solid #20372b;
+  backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  box-shadow: none; color: #E9F0EA;
+}
+.nav .sweep, .nav .nav-mid { display: none !important; }
+.nav .wrap { height: 70px; max-width: 1120px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 24px); gap: 6px; }
+.nav .brand { margin-right: auto; gap: 10px; color: #E9F0EA; }
+.nav .brand .zmark { width: 46px; height: 46px; }
+.nav .brand-name { font: 700 19px/1 var(--f-display); letter-spacing: -.01em; color: #E9F0EA; }
+.nav .nav-links { gap: 6px; }
+.nav .nav-links a { padding: 8px 14px; border-radius: 99px; font-size: 14.5px; font-weight: 500; color: #98AD9F; transition: color .2s, background .2s; }
+.nav .nav-links a:hover, .nav .nav-links a[aria-current="page"] { color: #E9F0EA; background: #132A20; }
+.nav .nav-links a::after { display: none; }
+.nav .btn.btn-glint { background: #E8B84A; color: #1B1404; border: 1px solid transparent; border-radius: 12px; box-shadow: none; padding: 10px 18px; font-size: 15px; font-weight: 600; margin-left: 8px; }
+.nav .btn.btn-glint:hover { background: #F2C86A; }
+.nav .btn.btn-glint::before, .nav .btn.btn-glint::after { display: none; }
+.nav .menu-btn { border: 1px solid #20372B; background: none; color: #E9F0EA; border-radius: 10px; }
+@media (max-width: 820px) {
+  .nav .wrap { gap: 10px; }
+  .nav .nav-links, .nav .nav-links.open, .nav > .wrap > .btn { display: none !important; }
+  .nav .menu-btn { display: grid; place-items: center; margin-left: 0; }
+  .nav .nav-drawer { top: 70px; left: 0; right: 0; border-radius: 0; border: 0; border-bottom: 1px solid #20372B; background: #0B1813; box-shadow: none; padding: 12px 16px 18px; }
+  .nav .nav-drawer a:not(.btn) { color: #98AD9F; border-bottom: 1px solid #20372B; }
+  .nav .nav-drawer a[aria-current] { color: #E9F0EA; }
+  .nav .drawer-cta { background: #E8B84A; color: #1B1404; border-radius: 12px; }
+}
+@media (max-width: 380px) { .nav .brand-name { font-size: 17px; } }
