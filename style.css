@@ -1063,3 +1063,7 @@ section[id] { scroll-margin-top: 90px; }
 .solution .phone .shot { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 34px; background: #F4F7F4; }
 .solution .phone { width: 250px; aspect-ratio: 250 / 408; }
 .solution .phone::before { display: none; }
+/* two real screenshots side by side on Our Solutions */
+.solution .phones { display: flex; gap: 18px; justify-content: center; align-items: flex-start; min-width: 0; }
+.solution .phones .phone { width: min(230px, 44vw); flex: none; }
+.solution .phones .phone + .phone { margin-top: 44px; }
