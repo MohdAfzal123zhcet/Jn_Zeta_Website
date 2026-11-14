@@ -1035,7 +1035,7 @@ section[id] { scroll-margin-top: 90px; }
   box-shadow: none; color: #E9F0EA;
 }
 .nav .sweep, .nav .nav-mid { display: none !important; }
-.nav .wrap { height: 70px; max-width: 1120px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 24px); gap: 6px; }
+.nav .wrap { height: 70px; max-width: none; margin: 0; padding: 0 clamp(14px, 2.4vw, 32px); gap: 6px; }
 .nav .brand { margin-right: auto; gap: 10px; color: #E9F0EA; }
 .nav .brand .zmark { width: 46px; height: 46px; }
 .nav .brand-name { font: 700 19px/1 var(--f-display); letter-spacing: -.01em; color: #E9F0EA; }
@@ -1043,8 +1043,8 @@ section[id] { scroll-margin-top: 90px; }
 .nav .nav-links a { padding: 8px 14px; border-radius: 99px; font-size: 14.5px; font-weight: 500; color: #98AD9F; transition: color .2s, background .2s; }
 .nav .nav-links a:hover, .nav .nav-links a[aria-current="page"] { color: #E9F0EA; background: #132A20; }
 .nav .nav-links a::after { display: none; }
-.nav .btn.btn-glint { background: #E8B84A; color: #1B1404; border: 1px solid transparent; border-radius: 12px; box-shadow: none; padding: 10px 18px; font-size: 15px; font-weight: 600; margin-left: 8px; }
-.nav .btn.btn-glint:hover { background: #F2C86A; }
+.nav .btn.btn-glint { background: #FFFFFF; color: #0A0F0C; border: 1px solid transparent; border-radius: 12px; box-shadow: none; padding: 10px 18px; font-size: 15px; font-weight: 600; margin-left: 8px; }
+.nav .btn.btn-glint:hover { background: #E4EBE6; }
 .nav .btn.btn-glint::before, .nav .btn.btn-glint::after { display: none; }
 .nav .menu-btn { border: 1px solid #20372B; background: none; color: #E9F0EA; border-radius: 10px; }
 @media (max-width: 820px) {
@@ -1054,6 +1054,6 @@ section[id] { scroll-margin-top: 90px; }
   .nav .nav-drawer { top: 70px; left: 0; right: 0; border-radius: 0; border: 0; border-bottom: 1px solid #20372B; background: #0B1813; box-shadow: none; padding: 12px 16px 18px; }
   .nav .nav-drawer a:not(.btn) { color: #98AD9F; border-bottom: 1px solid #20372B; }
   .nav .nav-drawer a[aria-current] { color: #E9F0EA; }
-  .nav .drawer-cta { background: #E8B84A; color: #1B1404; border-radius: 12px; }
+  .nav .drawer-cta { background: #FFFFFF; color: #0A0F0C; border-radius: 12px; }
 }
 @media (max-width: 380px) { .nav .brand-name { font-size: 17px; } }
