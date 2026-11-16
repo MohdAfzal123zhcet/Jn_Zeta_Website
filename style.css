@@ -1067,3 +1067,27 @@ section[id] { scroll-margin-top: 90px; }
 .solution .phones { display: flex; gap: 18px; justify-content: center; align-items: flex-start; min-width: 0; }
 .solution .phones .phone { width: min(230px, 44vw); flex: none; }
 .solution .phones .phone + .phone { margin-top: 44px; }
+
+/* v10 (2026-11-16): "Why EviLock" key points on Our Solutions, replaces the stats strip. Site colors + moving shine. */
+.kp { margin: 56px auto 0; padding: clamp(20px, 4vw, 46px); border-radius: 24px; border: 1px solid #D9E6DD; position: relative; overflow: hidden; isolation: isolate;
+  background: radial-gradient(60% 80% at 0% 0%, rgba(46,230,116,.2), transparent 62%), radial-gradient(55% 75% at 100% 100%, rgba(255,196,0,.22), transparent 62%), #F4F7F4; }
+.kp-eye { font: 700 12px/1 var(--f-display); letter-spacing: .16em; text-transform: uppercase; color: #13A24B; }
+.kp-h { margin: 10px 0 8px; font: 800 clamp(26px, 3.6vw, 40px)/1.1 var(--f-display); letter-spacing: -.025em; text-wrap: balance;
+  background: linear-gradient(90deg, #0E7A3A, #13A24B, #2EE674, #13A24B, #0E7A3A); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: kpshim 3.2s linear infinite; }
+@keyframes kpshim { to { background-position: -200% 0; } }
+.kp-sub { margin: 0 0 26px; color: var(--muted); max-width: 56ch; font-size: 16.5px; }
+.kp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 16px; }
+.kp-card { position: relative; overflow: hidden; isolation: isolate; padding: 24px; border-radius: 18px; border: 1px solid #CFE9D8;
+  background: linear-gradient(135deg, #EAFAF0 0%, #FFFFFF 55%, #FFF7D9 100%); box-shadow: 0 18px 40px -30px rgba(15,23,18,.4); }
+.kp-card::after { content: ""; position: absolute; top: 0; bottom: 0; left: -10%; width: 40%; pointer-events: none; z-index: -1;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(46,230,116,.16) 35%, rgba(255,215,0,.22) 65%, rgba(255,255,255,0));
+  transform: translateX(-130%) skewX(-18deg); animation: kpsweep 7s ease-in-out infinite; }
+.kp-card:nth-child(2)::after { animation-delay: -1.5s; } .kp-card:nth-child(3)::after { animation-delay: -3s; }
+.kp-card:nth-child(4)::after { animation-delay: -4.5s; } .kp-card:nth-child(5)::after { animation-delay: -6s; }
+@keyframes kpsweep { 0% { transform: translateX(-130%) skewX(-18deg); } 65%, 100% { transform: translateX(330%) skewX(-18deg); } }
+.kp-ic { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; margin-bottom: 16px; color: #13A24B; border: 1px solid #CFE9D8; background: linear-gradient(135deg, #E2F7EA, #FFF6D6); }
+.kp-card:nth-child(even) .kp-ic { color: #B98A00; border-color: #F6E7B0; }
+.kp-ic svg { width: 23px; height: 23px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.kp-card h4 { margin: 0 0 6px; font: 700 18.5px/1.25 var(--f-display); color: var(--ink); }
+.kp-card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.55; }
+@media (prefers-reduced-motion: reduce) { .kp-h { animation: none; } .kp-card::after { animation: none; opacity: 0; } }
