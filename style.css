@@ -1130,3 +1130,6 @@ section[id] { scroll-margin-top: 90px; }
 
 /* About: paragraph fills the title's width edge to edge */
 @media (min-width: 900px) { .ab-lead { text-align: justify; text-align-last: left; text-justify: inter-word; hyphens: none; } }
+
+/* Our Vision: no outer box, so the title, paragraph, cards and quote all start at the same left edge as the "Our Vision" heading */
+.ab { padding: 8px 0 0; border: 0; border-radius: 0; background: none; overflow: visible; }
