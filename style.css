@@ -1160,3 +1160,17 @@ section[id] { scroll-margin-top: 90px; }
 
 /* Setup steps: no number circles */
 .install li::before { content: none; display: none; }
+
+/* EviLock page only: tighter spacing between sections (2026-11-17) */
+.evi-page section { padding: 48px 0; }
+@media (max-width: 700px) { .evi-page section { padding: 36px 0; } }
+.evi-page .sec-head { margin-bottom: 24px; }
+.evi-page .sec-head .lead { margin-top: 10px; }
+.evi-page .cta { padding: 48px 0; }
+.evi-page .evi-hero { padding: 124px 0 40px; }
+@media (max-width: 700px) { .evi-page .evi-hero { padding: 112px 0 36px; } }
+.evi-page .evi-stage { min-height: 460px; }
+.evi-page .pl-free { margin-top: 28px; }
+.evi-page .steps { gap: 12px; }
+.evi-page .get-grid, .evi-page .pillars { gap: 14px; }
+.evi-page .kp { margin-top: 0; }
