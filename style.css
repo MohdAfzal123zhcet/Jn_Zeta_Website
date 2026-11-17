@@ -1127,3 +1127,6 @@ section[id] { scroll-margin-top: 90px; }
 /* About: the paragraph takes exactly the width of the title (it does not push the width itself) */
 .ab-head { display: inline-block; max-width: 100%; }
 .ab-lead { width: 0; min-width: 100%; max-width: none; }
+
+/* About: paragraph fills the title's width edge to edge */
+@media (min-width: 900px) { .ab-lead { text-align: justify; text-align-last: left; text-justify: inter-word; hyphens: none; } }
