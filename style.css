@@ -1111,3 +1111,12 @@ section[id] { scroll-margin-top: 90px; }
 .ab-quote { margin: 32px 0 0; padding-left: 18px; border-left: 3px solid #2EE674; max-width: 46ch; font: italic 500 clamp(19px, 2.2vw, 24px)/1.4 Georgia, "Times New Roman", serif; color: var(--ink); }
 .ab-quote span { display: block; margin-top: 10px; font: 700 12px/1 var(--f-display); letter-spacing: .14em; text-transform: uppercase; font-style: normal; color: #13A24B; }
 @media (prefers-reduced-motion: reduce) { .ab-shim { animation: none; } .ab-card::after { animation: none; opacity: 0; } }
+
+/* About refinements: title on one line, icons on the three cards */
+.ab-h { font-size: clamp(24px, 3.5vw, 42px); max-width: none; }
+@media (min-width: 900px) { .ab-h { white-space: nowrap; } }
+.ab-ic { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; margin-bottom: 16px; color: #13A24B; border: 1px solid #CFE9D8; background: linear-gradient(135deg, #E2F7EA, #FFF6D6); }
+.ab-card:nth-child(1) .ab-ic { color: #B98A00; border-color: #F6E7B0; }
+.ab-ic svg { width: 23px; height: 23px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.ab-card small { font-size: 12.5px; }
+.ab-card p { font-size: 17px; font-weight: 500; }
