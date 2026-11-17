@@ -1174,3 +1174,11 @@ section[id] { scroll-margin-top: 90px; }
 .evi-page .steps { gap: 12px; }
 .evi-page .get-grid, .evi-page .pillars { gap: 14px; }
 .evi-page .kp { margin-top: 0; }
+
+/* Home page only: tighter spacing between sections (2026-11-17) */
+.home-page section:not(.vhero) { padding: 52px 0; }
+@media (max-width: 700px) { .home-page section:not(.vhero) { padding: 38px 0; } }
+.home-page .big-title { margin-bottom: 26px; }
+.home-page .big-title::after { margin-top: 16px; }
+.home-page .kp { margin-top: 36px; }
+.home-page .ab { margin-top: 0; }
