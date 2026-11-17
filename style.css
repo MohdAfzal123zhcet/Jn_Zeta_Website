@@ -1120,3 +1120,10 @@ section[id] { scroll-margin-top: 90px; }
 .ab-ic svg { width: 23px; height: 23px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 .ab-card small { font-size: 12.5px; }
 .ab-card p { font-size: 17px; font-weight: 500; }
+
+/* About: paragraph spans the full card width, same column as the cards */
+.ab-lead { max-width: none; }
+
+/* About: the paragraph takes exactly the width of the title (it does not push the width itself) */
+.ab-head { display: inline-block; max-width: 100%; }
+.ab-lead { width: 0; min-width: 100%; max-width: none; }
